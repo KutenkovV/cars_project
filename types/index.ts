@@ -6,7 +6,7 @@ export interface CustomButtonProps {
     handleClick?: MouseEventHandler<HTMLButtonElement>;
     btnType?: "button" | "submit";
     textStyLes?: string;
-    rightIcon?:string;
+    rightIcon?: string;
     isDisabled?: boolean;
 }
 
@@ -31,9 +31,19 @@ export interface CarCardProps {
 }
 
 export interface filterProps {
-    manufacturer: string, 
-    year: number,
-    fuel: string,
-    limit: number,
-    model: string,
+    manufacturer: string;
+    year: number;
+    fuel: string;
+    limit: number;
+    model: string;
+}
+
+export interface OptionsProps {
+    title: string;
+    value: string;
+}
+
+export interface CustomFilterProps {
+    title: string;
+    options: OptionsProps[];
 }

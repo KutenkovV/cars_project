@@ -49,7 +49,10 @@ const SearchBar = () => {
 
         const newPathname = `${ window.location.pathname }?${ searchParams.toString() }`
 
-        router.push(newPathname);
+        // Запрещаю страницу скороллить вверх 
+        router.push(newPathname, {
+            scroll: false,
+        });
     }
 
     return (

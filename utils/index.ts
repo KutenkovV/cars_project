@@ -1,4 +1,5 @@
 import { CarCardProps, filterProps } from "@/types";
+import router from "next/router";
 
 export async function fetchCars(filter: filterProps) {
     const { manufacturer, year, model, limit, fuel } = filter;
@@ -31,7 +32,7 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
 }
 
 export const generatedCarImageUrl = (car: CarCardProps, angle?: string) => {
-    const url = new URL('https://cdn.imagin.studio/getimage');
+    const url = new URL("https://cdn.imagin.studio/get-image");
 
     const { make, year, model } = car;
 
@@ -39,8 +40,8 @@ export const generatedCarImageUrl = (car: CarCardProps, angle?: string) => {
     url.searchParams.append('make', make);
     url.searchParams.append('modelFamily', model.split(' ')[0]);
     url.searchParams.append('zoomType', 'fullscreen');
-    url.searchParams.append('modelYear', `${ year }`);
-    url.searchParams.append('angle', `${ angle }`);
+    url.searchParams.append('modelYear', `${year}`);
+    url.searchParams.append('angle', `${angle}`);
 
     return `${ url }`
 }
