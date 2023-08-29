@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { CustomFilter, Hero, SearchBar, CarCard } from '@/components';
+import { CustomFilter, Hero, SearchBar, CarCard, ShowMore } from '@/components';
 import { fetchCars } from '@/utils';
 import { fuels, yearsOfProduction } from '@/constants';
 
@@ -38,17 +38,21 @@ export default async function Home({ searchParams }) {
         </div>
 
         {!isDataEmpty ? (
-          <section className='home__cars-wrapper'>
-            {
-              allCars?.map((car) => (
-                <CarCard car={car} key={car}/>
-              ))
-            }
-          </section>
-        ) : (
+          <section>
+            <div className='home__cars-wrapper'>
+              {allCars?.map((car) => (
+                <CarCard car={car} key={car} />
+              ))}
+            </div>
+
+            <ShowMore 
+            pageNumber={(searchParams.limit || 10) / 10}
+            isNext={(searchParams.limit || 10) > allCars.length}
+            />
+          </section>) : (
           <div className='home__error-container'>
-            <h2 className='text-black text-xl fond-bold'>упс, нету данных</h2>
-            <p>allCars?.message</p>
+            <h2 className='text-black text-xl fond-bold'>Упс, мы ничего не нашли :C</h2>
+            <p>{allCars?.message}</p>
           </div>
         )}
       </div>
