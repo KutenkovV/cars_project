@@ -7,7 +7,6 @@ import { fuels, yearsOfProduction } from '@/constants';
 // todo - на пропс searchParams у нас выбивает ошибку, поэтому так оставил
 //@ts-ignore
 export default async function Home({ searchParams }) {
-
   const allCars = await fetchCars({
     manufacturer: searchParams.manufacturer || '',
     year: searchParams.year || 2022,
@@ -24,8 +23,8 @@ export default async function Home({ searchParams }) {
 
       <div className='mt-12 padding-x padding-y max-width' id='discover'>
         <div className='home__text-container'>
-          <h1 className='text-4xl font-extrabold'>Car Catalogue</h1>
-          <p>Explore the car you might like</p>
+          <h1 className='text-4xl font-extrabold'>Каталог машин</h1>
+          <p>Выберите машину которая больше нравится</p>
         </div>
 
         <div className='home__filters'>

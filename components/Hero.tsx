@@ -1,11 +1,14 @@
 "use client";
 
+import { useRef } from 'react';
 import Image from 'next/image';
 import CustomButton from './CustomButton';
 
 const Hero = () => {
     const handleScroll = () => {
+        const scrollSection = document.getElementById('discover');
 
+        scrollSection?.scrollIntoView({ behavior: 'smooth' });
     }
 
     return (
@@ -16,11 +19,11 @@ const Hero = () => {
                 </h1>
 
                 <p className="hero__subtitle">
-                    Упростите свой процесс аренды автомобиля с помощью нашего простого процесса бронирования
+                    Упростите свой процесс аренды автомобиля с помощью нашего простого и доступного сервиса
                 </p>
 
                 <CustomButton
-                    title="Изучить автомобили"
+                    title="Начать смотреть"
                     containerStyles="bg-primary-blue text-white rounded-full mt-10"
                     handleClick={handleScroll}
                 />
