@@ -15,6 +15,8 @@ export async function fetchCars(filter: filterProps) {
 
     const result = await response.json();
 
+    console.log('запрос сработал!');
+
     return result;
 }
 

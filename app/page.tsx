@@ -24,7 +24,7 @@ export default async function Home({ searchParams }) {
       <div className='mt-12 padding-x padding-y max-width' id='discover'>
         <div className='home__text-container'>
           <h1 className='text-4xl font-extrabold'>Каталог машин</h1>
-          <p>Выберите машину которая больше нравится</p>
+          <p>Выберите машину которая Вам больше нравится</p>
         </div>
 
         <div className='home__filters'>
@@ -40,7 +40,8 @@ export default async function Home({ searchParams }) {
           <section>
             <div className='home__cars-wrapper'>
               {allCars?.map((car) => (
-                <CarCard car={car} key={car} />
+                // Сделал из ключа такой вагон, потому что всё равно выбивало одинаковые ключи
+                <CarCard car={car} key={`${car.model+car.year+car.city_mpg}`} />
               ))}
             </div>
 
