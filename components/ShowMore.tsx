@@ -1,16 +1,19 @@
 "use client";
 
-import { ShowMoreProps } from '@/types';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { CustomButton } from '.';
+import Router from 'next/router';
+
+import { ShowMoreProps } from '@/types';
 import { updatedSearchParams } from '@/utils';
+import { CustomButton } from '.';
 
 const ShowMore = ({ pageNumber, isNext }: ShowMoreProps) => {
     const router = useRouter();
 
     const handleNavigation = () => {
-        const newLimit  = (pageNumber + 1) * 10;
-        const newPathName = updatedSearchParams("limit", `${newLimit}`)
+        const newLimit = (pageNumber + 1) * 10;
+        const newPathName = updatedSearchParams("limit", `${ newLimit }`)
 
         router.push(newPathName, {
             scroll: false
@@ -18,16 +21,18 @@ const ShowMore = ({ pageNumber, isNext }: ShowMoreProps) => {
     }
 
     return (
-        <div className='w-full flex-center gap-5 mt-10'>
-            {!isNext && (
-                <CustomButton
-                title='Show more'
-                btnType='button'
-                containerStyles='bg-primary-blue rounded-full text-white'
-                handleClick={handleNavigation}
-                />
-            )}
-        </div>
+        <>
+            <div className='w-full flex-center gap-5 mt-10'>
+                {!isNext && (
+                    <CustomButton
+                        title='Show more'
+                        btnType='button'
+                        containerStyles='bg-primary-blue rounded-full text-white'
+                        handleClick={handleNavigation}
+                    />
+                )}
+            </div>
+        </>
     )
 }
 

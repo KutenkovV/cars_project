@@ -2,8 +2,8 @@ import { Navbar, Footer } from '@/components'
 import './globals.css'
 
 export const metadata = {
-  title: 'Next project',
-  description: 'Тестовые проект на Next.js',
+  title: 'Moto Hub',
+  description: 'Сервис для подборки мото-техники от всех проиводителей',
 }
 
 export default function RootLayout({
@@ -15,7 +15,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="relative">
         <Navbar />
-        {children}
+          {children}
         <Footer />
       </body>
     </html>
