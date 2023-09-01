@@ -1,14 +1,15 @@
 "use client";
 
-import { ShowMoreProps } from '@/types';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { CustomButton } from '.';
+import Router from 'next/router';
+
+import { ShowMoreProps } from '@/types';
 import { updatedSearchParams } from '@/utils';
-import { useState } from 'react';
+import { CustomButton } from '.';
 
 const ShowMore = ({ pageNumber, isNext }: ShowMoreProps) => {
     const router = useRouter();
-    const [loading, setLoading] = useState(false)
 
     const handleNavigation = () => {
         const newLimit = (pageNumber + 1) * 10;
@@ -21,9 +22,7 @@ const ShowMore = ({ pageNumber, isNext }: ShowMoreProps) => {
 
     return (
         <>
-            {loading ? (
-                <p>Э, ебать, падажди</p>
-            ) : (<div className='w-full flex-center gap-5 mt-10'>
+            <div className='w-full flex-center gap-5 mt-10'>
                 {!isNext && (
                     <CustomButton
                         title='Show more'
@@ -32,7 +31,7 @@ const ShowMore = ({ pageNumber, isNext }: ShowMoreProps) => {
                         handleClick={handleNavigation}
                     />
                 )}
-            </div>)}
+            </div>
         </>
     )
 }

@@ -1,5 +1,4 @@
 import { CarCardProps, filterProps } from "@/types";
-import router from "next/router";
 
 export async function fetchCars(filter: filterProps) {
     const { manufacturer, year, model, limit, fuel } = filter;
@@ -15,7 +14,10 @@ export async function fetchCars(filter: filterProps) {
 
     const result = await response.json();
 
-    console.log('запрос сработал!');
+    // делаю загрузку ещё чуть больше чтобы suspense пробовать
+    await new Promise((resolve) => {
+        setTimeout(resolve, 3000);
+    })
 
     return result;
 }
